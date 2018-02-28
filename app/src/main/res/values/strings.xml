@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ResumeBuilder</string>
+    <string name="title_activity_resume_form">resumeForm</string>
 </resources>
