@@ -29,14 +29,14 @@ public class resumeForm extends AppCompatActivity {
         HashMap<String, String> user = session.getUserDetails();
         String sessname = user.get(SessionManagement.KEY_NAME);
         String sessemail = user.get(SessionManagement.KEY_EMAIL);
-        //int sessphoneNumber = Integer.parseInt(user.get(SessionManagement.KEY_PHONENUMBER));
+        int sessphoneNumber = Integer.parseInt(user.get(SessionManagement.KEY_PHONENUMBER));
 
         name = (EditText)findViewById(R.id.name);
         name.setText(sessname);
         email = (EditText)findViewById(R.id.email);
         email.setText(sessemail);
         phone = (EditText)findViewById(R.id.phone);
-        phone.setText("0");
+        phone.setText(""+sessphoneNumber);
         education = (EditText)findViewById(R.id.education);
         skills = (EditText)findViewById(R.id.skills);
         experience = (EditText)findViewById(R.id.experience);

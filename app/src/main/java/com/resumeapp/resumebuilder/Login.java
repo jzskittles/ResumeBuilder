@@ -58,6 +58,12 @@ public class Login extends AppCompatActivity {
                             //Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_SHORT).show();
                             if(jsonObject.has("success")){
                                 Toast.makeText(getApplicationContext(), "SUCCESS: " + jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
+                                String user = jsonObject.getString("user");
+                                String name = jsonObject.getString("name");
+                                int phoneNumber = jsonObject.getInt("phone");
+                                String email = jsonObject.getString("email");
+
+                                session.createLoginSession(user, name, phoneNumber, email);
                                 startActivity(new Intent(getApplicationContext(),processImage.class));
                             }else{
                                 Toast.makeText(getApplicationContext(),"ERROR: "+jsonObject.getString("error"),Toast.LENGTH_SHORT).show();
