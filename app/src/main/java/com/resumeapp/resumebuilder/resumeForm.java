@@ -9,7 +9,10 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.EditText;
 
+import java.util.HashMap;
+
 public class resumeForm extends AppCompatActivity {
+    SessionManagement session;
 
     private EditText name, email, phone, education, skills, experience, awards, leadership;
 
@@ -18,9 +21,22 @@ public class resumeForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resume_form);
 
-        //name = (EditText)findViewById(R.id.name);
-        //email = (EditText)findViewById(R.id.email);
-        //phone = (EditText)findViewById(R.id.phone);
+        session = new SessionManagement(getApplicationContext());
+
+        session.checkLogin();
+
+        // get user data from session
+        HashMap<String, String> user = session.getUserDetails();
+        String sessname = user.get(SessionManagement.KEY_NAME);
+        String sessemail = user.get(SessionManagement.KEY_EMAIL);
+        //int sessphoneNumber = Integer.parseInt(user.get(SessionManagement.KEY_PHONENUMBER));
+
+        name = (EditText)findViewById(R.id.name);
+        name.setText(sessname);
+        email = (EditText)findViewById(R.id.email);
+        email.setText(sessemail);
+        phone = (EditText)findViewById(R.id.phone);
+        phone.setText("0");
         education = (EditText)findViewById(R.id.education);
         skills = (EditText)findViewById(R.id.skills);
         experience = (EditText)findViewById(R.id.experience);
